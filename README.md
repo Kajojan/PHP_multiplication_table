@@ -1,1 +1,0 @@
-# PHP_multiplication_table
