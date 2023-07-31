@@ -10,7 +10,7 @@ class Tab extends Model
 
     protected $fillable = [
         'number',
-        'array', 
+        'string', 
     ];
 
     public $timestamps = false;

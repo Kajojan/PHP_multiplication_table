@@ -23,15 +23,17 @@
     if (isset($_GET["size"])) {
 
         $result = $tab->start($_GET["size"]);
+        echo "json: <br> ";
 
-        foreach ($result as $row) {
+        echo $result;
+        echo "<br>  normal: ";
+        foreach (json_decode($result) as $row) {
             echo "<p>";
             foreach ($row as $item) {
                 echo "$item  ";
             }
             echo "</p>";
         }
-        
     }
     ?>
 
