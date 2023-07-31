@@ -18,7 +18,8 @@ class ExampleTest extends TestCase
         $tab = new Multiplication();
 
         $this->expectException(\InvalidArgumentException::class);
-        $tab->generate(101);
+        $this->expectExceptionMessage('wrong dimension');
+        $tab->start(101);
     }
 
 
@@ -27,9 +28,11 @@ class ExampleTest extends TestCase
         $tab = new Multiplication();
 
         $this->expectException(\InvalidArgumentException::class);
-        $tab->generate(0);
+        $this->expectExceptionMessage('wrong dimension');
+        $tab->start(0);
     }
-    public function testGenerateReturnsCorrectResultFor5x5()
+
+    public function testGenerateReturnsCorrectResult()
     {
         $tab = new Multiplication();
         $result = $tab->generate(3);
@@ -38,8 +41,6 @@ class ExampleTest extends TestCase
             [1, 2, 3],
             [2, 4, 6],
             [3, 6, 9],
-            [4, 8, 12],
-            [5, 10, 15],
         ];
 
         $this->assertEquals($expectedResult, $result);
@@ -48,8 +49,8 @@ class ExampleTest extends TestCase
     public function testDatabase()
     {
         $tab = new Multiplication();
-        $result = $tab->generate(3);
+        $result = $tab->start(3);
 
-        $this->assertDatabaseHas('All_tab', ['number' => 5]);
+        $this->assertDatabaseHas('All_tab', ['number' => 3]);
     }
 }
